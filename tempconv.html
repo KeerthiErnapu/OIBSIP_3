@@ -1,0 +1,103 @@
+<html>
+    <head><title>
+        Temperature Conversion
+    </title>
+    <style>
+        button{
+            margin:30px;
+            border:3px solid blue;
+            background-color:blue;
+            color:white;
+            font-size:20px;
+
+        }
+        input{
+            width:180px;
+            height:30px;
+            border:1px solid black;
+            text-align: center;
+            font-size:20px;
+        }
+        span{
+            font-size:22px;
+            margin:5px;
+        }
+        option{
+            font-size:20px;
+        }
+        label{
+            font-size:22px;
+        }
+        body{
+            background-image:linear-gradient(lemonchiffon,grey);
+        }
+    </style>
+</head>
+    <body>
+        <center>
+        <div>
+            <h1>Temperature converter</h1>
+            <label for="enter">Enter Temperature:</label>
+            <input type="number" id="enter"><br><br>
+            <span>From:</span>
+            <select id="from">
+                <option>celcius</option>
+                <option>fahrenheit</option>
+                <option>kelvin</option>
+            </select>
+            <span>To:</span>
+            <select id="to">
+                <option>celcius</option>
+                <option>fahrenheit</option>
+                <option>kelvin</option>
+            </select><br>
+            <center>
+            <button type="submit" onclick="convert()">Convert</button>
+            </center><br>
+            <span>Result:</span>
+            <input id="show"></input>
+        </div>
+    </center>
+    <script>
+        function convert(){
+            const a=document.getElementById('from').value;
+            const b=document.getElementById('to').value;
+            const c=parseFloat(document.getElementById('enter').value)
+            if(a=="celcius"){
+                if(b=="fahrenheit"){
+                    var re=(c*(9/5)+32).toFixed(3);
+                }
+                else if(b=="kelvin"){
+                    var re=(c+273.15).toFixed(3);
+                }
+                else{
+                    var re=c;
+                }
+            }
+            else if(a=="fahrenheit"){
+                if(b=="celcius"){
+                    var re=((c-32)*5/9).toFixed(3);
+                }
+                else if(b=="kelvin"){
+                    var re=(((c-32)*5/9)+273.15).toFixed(3);
+                }
+                else{
+                    var re=c;
+                }
+            }
+            else{
+                if(b=="celcius"){
+                    var re=(c-273.15).toFixed(3);
+                }
+                else if(b=="fahrenheit"){
+                    var re=((c-273.15)*1.8+32).toFixed(3);
+                }
+                else{
+                    var re=c;
+                }
+            }
+            document.getElementById('show').value=re;
+        }
+        </script>
+    </body>
+</html>
